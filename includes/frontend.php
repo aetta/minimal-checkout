@@ -22,26 +22,28 @@ add_action('template_redirect', function () {
 
 function mct_remove_coupon_everywhere()
 {
-    $hooks = [
-        'woocommerce_before_checkout_form',
-        'woocommerce_checkout_after_order_review',
-        'woocommerce_review_order_before_order_total',
-        'woocommerce_checkout_before_order_review',
-        'woocommerce_before_cart'
-    ];
-    foreach ($hooks as $h) {
-        for ($p = -10; $p <= 50; $p++) {
-            remove_action($h, 'woocommerce_checkout_coupon_form', $p);
-        }
+    remove_action('woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10);
+    remove_action('woocommerce_checkout_after_order_review', 'woocommerce_checkout_coupon_form', 10);
+    remove_action('woocommerce_checkout_before_order_review', 'woocommerce_checkout_coupon_form', 10);
+    remove_action('woocommerce_review_order_before_order_total', 'woocommerce_checkout_coupon_form', 10);
+    remove_action('woocommerce_before_cart', 'woocommerce_checkout_coupon_form', 10);
+    for ($p = -10; $p <= 50; $p++) {
+        remove_action('woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', $p);
+        remove_action('woocommerce_checkout_after_order_review', 'woocommerce_checkout_coupon_form', $p);
+        remove_action('woocommerce_checkout_before_order_review', 'woocommerce_checkout_coupon_form', $p);
+        remove_action('woocommerce_review_order_before_order_total', 'woocommerce_checkout_coupon_form', $p);
+        remove_action('woocommerce_before_cart', 'woocommerce_checkout_coupon_form', $p);
     }
 }
 
 function mct_move_coupon_once()
 {
+    static $done = false;
+    if ($done) return;
+    $done = true;
     if (!mct_wc_ready()) return;
     if (!mct_is_plugin_checkout_context()) return;
     mct_remove_coupon_everywhere();
-    remove_action('woocommerce_review_order_before_order_total', 'mct_render_coupon_block', 9);
     $opt = mct_get_options();
     if (!empty($opt['show_coupon'])) {
         if (!has_action('woocommerce_review_order_before_order_total', 'mct_render_coupon_block')) {
@@ -49,7 +51,7 @@ function mct_move_coupon_once()
         }
     }
 }
-add_action('wp', 'mct_move_coupon_once', 99);
+add_action('template_redirect', 'mct_move_coupon_once', 1);
 
 function mct_render_coupon_block()
 {
@@ -153,17 +155,11 @@ add_filter('woocommerce_enable_order_notes_field', function () {
     return !empty($opt['show_notes']);
 });
 
-add_filter('woocommerce_coupons_enabled', function ($enabled) {
-    if (!mct_is_plugin_checkout_context()) return $enabled;
-    return $enabled;
-}, 9);
-
 add_filter('woocommerce_cart_item_name', function ($name, $cart_item, $cart_item_key) {
     if (!mct_is_plugin_checkout_context()) return $name;
     $opt = mct_get_options();
     if (empty($opt['show_thumbs'])) return $name;
     if (empty($cart_item['data']) || !is_a($cart_item['data'], 'WC_Product')) return $name;
-
     $product = $cart_item['data'];
     $image_id = method_exists($product, 'get_image_id') ? $product->get_image_id() : 0;
     if (!$image_id && method_exists($product, 'get_parent_id')) {
@@ -181,7 +177,6 @@ add_filter('woocommerce_cart_item_name', function ($name, $cart_item, $cart_item
         if ($src) $thumb_html = '<img src="' . esc_url($src) . '" class="mct-item-thumb" alt="" />';
     }
     if (!$thumb_html) return $name;
-
     return '<span class="mct-item">' . $thumb_html . '<span class="mct-item-name">' . $name . '</span></span>';
 }, 10, 3);
 
@@ -193,7 +188,7 @@ add_action('woocommerce_checkout_before_customer_details', function () {
 add_action('woocommerce_checkout_after_customer_details', function () {
     if (!mct_is_plugin_checkout_context()) return;
     echo '</div>';
-});
+}, 1);
 
 add_action('woocommerce_checkout_before_order_review_heading', function () {
     if (!mct_is_plugin_checkout_context()) return;
@@ -211,6 +206,54 @@ add_action('woocommerce_checkout_after_order_review', function () {
         if (!$url || !isset($icons[$icon])) continue;
         $out .= '<a class="mct-social" href="' . esc_url($url) . '" target="_blank" rel="noopener noreferrer">' . $icons[$icon] . '</a>';
     }
-    echo '</div>';
+
     if ($out) echo '<div class="mct-footer">' . $out . '</div>';
-});
+
+    $layout = isset($opt['layout']) ? $opt['layout'] : 'full';
+
+    if ($layout !== 'two_sidebar') {
+        echo '</div>';
+    }
+}, 10);
+
+function mct_first_active_sidebar_id()
+{
+    $map = wp_get_sidebars_widgets();
+    if (!is_array($map)) return '';
+    foreach ($map as $id => $widgets) {
+        if ($id === 'wp_inactive_widgets') continue;
+        if (!empty($widgets) && is_array($widgets)) return $id;
+    }
+    return '';
+}
+
+function mct_capture_sidebar_html()
+{
+    ob_start();
+    get_sidebar();
+    $html = trim(ob_get_clean());
+    if ($html !== '') return $html;
+    $sid = mct_first_active_sidebar_id();
+    if (!$sid) return '';
+    ob_start();
+    echo '<div class="mct-widgets">';
+    dynamic_sidebar($sid);
+    echo '</div>';
+    return trim(ob_get_clean());
+}
+
+add_action('woocommerce_checkout_after_order_review', function () {
+    if (!mct_is_plugin_checkout_context()) return;
+    $opt = mct_get_options();
+    if (!isset($opt['layout']) || $opt['layout'] !== 'two_sidebar') return;
+
+    echo '</div>';
+
+    $html = mct_capture_sidebar_html();
+    if ($html !== '') echo '<aside class="mct-card mct-theme-sidebar">' . $html . '</aside>';
+}, 20);
+
+add_action('woocommerce_after_checkout_form', function () {
+    if (!mct_is_plugin_checkout_context()) return;
+    echo '</div>';
+}, 999);
