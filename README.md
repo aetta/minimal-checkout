@@ -55,19 +55,21 @@ Go to **Settings → Minimal Checkout**:
 
 ## Development
 
+<pre>
 minimal-checkout/
 ├─ minimal-checkout.php
 ├─ uninstall.php
 ├─ includes/
-│ ├─ admin.php
-│ ├─ common.php
-│ └─ frontend.php
+│  ├─ admin.php
+│  ├─ common.php
+│  └─ frontend.php
 ├─ assets/
-│ └─ minimal-checkout.css
+│  └─ minimal-checkout.css
 ├─ languages/
-│ └─ minimal-checkout.pot
+│  └─ minimal-checkout.pot
 ├─ README.md
 └─ LICENSE
+</pre>
 
 ## Changelog
 

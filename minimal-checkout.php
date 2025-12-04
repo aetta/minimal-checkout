@@ -6,7 +6,7 @@
  * Description: Configurable WooCommerce checkout with clean layout, field toggles and optional product thumbnails.
  * Version: 2.2.0
  * Author: aetta
- * Author URI: https://profiles.wordpress.org/aetta
+ * Author URI: https://profiles.wordpress.org/chiape
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Requires at least: 5.8
