@@ -1,0 +1,10 @@
+*.zip
+languages/*.po
+languages/*.mo
+*.zip
+.DS_Store
+Thumbs.db
+node_modules/
+vendor/
+.vscode/
+.idea/

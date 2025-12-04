@@ -1,0 +1,148 @@
+# Copyright (C) 2025 <Your Name>
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Minimal Checkout 2.2.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/minimal-checkout\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-12-04T15:10:54-03:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: minimal-checkout\n"
+
+#. Plugin Name of the plugin
+#: minimal-checkout.php
+#: includes/admin.php:6
+#: includes/admin.php:7
+#: includes/admin.php:65
+msgid "Minimal Checkout"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: minimal-checkout.php
+msgid "https://github.com/<your-user>/minimal-checkout"
+msgstr ""
+
+#. Description of the plugin
+#: minimal-checkout.php
+msgid "Configurable WooCommerce checkout with clean layout, field toggles and optional product thumbnails."
+msgstr ""
+
+#. Author of the plugin
+#: minimal-checkout.php
+msgid "<Your Name>"
+msgstr ""
+
+#. Author URI of the plugin
+#: minimal-checkout.php
+msgid "https://profiles.wordpress.org/<your-wporg-user>/"
+msgstr ""
+
+#: includes/admin.php:66
+#: includes/admin.php:74
+msgid "Layout"
+msgstr ""
+
+#: includes/admin.php:66
+msgid "Fields"
+msgstr ""
+
+#: includes/admin.php:66
+msgid "Socials"
+msgstr ""
+
+#: includes/admin.php:75
+msgid "One column"
+msgstr ""
+
+#: includes/admin.php:76
+msgid "Two columns"
+msgstr ""
+
+#: includes/admin.php:77
+msgid "Two columns + theme sidebar"
+msgstr ""
+
+#: includes/admin.php:80
+msgid "Enable plugin CSS"
+msgstr ""
+
+#: includes/admin.php:80
+msgid "Enable"
+msgstr ""
+
+#: includes/admin.php:82
+msgid "Strip WooCommerce styles"
+msgstr ""
+
+#: includes/admin.php:82
+msgid "Disable WC default CSS"
+msgstr ""
+
+#: includes/admin.php:84
+msgid "Show coupon box"
+msgstr ""
+
+#: includes/admin.php:86
+msgid "Show order notes"
+msgstr ""
+
+#: includes/admin.php:88
+msgid "Ship to a different address"
+msgstr ""
+
+#: includes/admin.php:90
+msgid "Hide page title"
+msgstr ""
+
+#: includes/admin.php:92
+msgid "Show product thumbnails"
+msgstr ""
+
+#: includes/admin.php:94
+msgid "Checkout page"
+msgstr ""
+
+#: includes/admin.php:95
+msgid "Select"
+msgstr ""
+
+#: includes/admin.php:101
+msgid "Field key"
+msgstr ""
+
+#: includes/admin.php:101
+msgid "Enabled"
+msgstr ""
+
+#: includes/admin.php:101
+msgid "Label"
+msgstr ""
+
+#: includes/admin.php:112
+msgid "Icon"
+msgstr ""
+
+#: includes/admin.php:112
+msgid "URL"
+msgstr ""
+
+#: includes/admin.php:125
+msgid "Save changes"
+msgstr ""
+
+#: includes/frontend.php:190
+msgid "Billing details"
+msgstr ""
+
+#: includes/frontend.php:200
+msgid "Your order"
+msgstr ""
+
+#: minimal-checkout.php:75
+msgid "Settings"
+msgstr ""
