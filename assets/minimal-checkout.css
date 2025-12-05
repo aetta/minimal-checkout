@@ -1,12 +1,12 @@
-.mct-checkout:not(.mct-two-sidebar) .site-main,
-.mct-checkout:not(.mct-two-sidebar) .content-area,
-.mct-checkout:not(.mct-two-sidebar) .primary,
-.mct-checkout:not(.mct-two-sidebar) .container,
-.mct-checkout:not(.mct-two-sidebar) .wrap,
-.mct-checkout:not(.mct-two-sidebar) .content{width:100%!important;max-width:none!important}
-.mct-checkout:not(.mct-two-sidebar) .secondary,
-.mct-checkout:not(.mct-two-sidebar) .sidebar,
-.mct-checkout:not(.mct-two-sidebar) .widget-area{display:none!important}
+.mct-checkout .site-main,
+.mct-checkout .content-area,
+.mct-checkout .primary,
+.mct-checkout .container,
+.mct-checkout .wrap,
+.mct-checkout .content{width:100%!important;max-width:none!important;box-sizing:border-box!important;padding:0!important}
+.mct-checkout .secondary,
+.mct-checkout .sidebar,
+.mct-checkout .widget-area{display:none!important}
 .mct-hide-title .entry-title,
 .mct-hide-title .page-title{display:none!important}
 
