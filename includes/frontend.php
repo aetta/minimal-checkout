@@ -216,30 +216,35 @@ add_action('woocommerce_checkout_after_order_review', function () {
     }
 }, 10);
 
-function mct_first_active_sidebar_id()
+function mct_get_sidebar_to_use()
 {
     $map = wp_get_sidebars_widgets();
-    if (!is_array($map)) return '';
-    foreach ($map as $id => $widgets) {
-        if ($id === 'wp_inactive_widgets') continue;
-        if (!empty($widgets) && is_array($widgets)) return $id;
+
+    if (is_array($map)) {
+        foreach ($map as $id => $widgets) {
+            if ($id === 'wp_inactive_widgets') continue;
+            if (!empty($widgets) && is_array($widgets)) {
+                return $id;
+            }
+        }
     }
+
     return '';
 }
 
 function mct_capture_sidebar_html()
 {
-    ob_start();
-    get_sidebar();
-    $html = trim(ob_get_clean());
-    if ($html !== '') return $html;
-    $sid = mct_first_active_sidebar_id();
+    $sid = mct_get_sidebar_to_use();
     if (!$sid) return '';
+
     ob_start();
-    echo '<div class="mct-widgets">';
+    echo '<div class="mct-widgets-container">';
     dynamic_sidebar($sid);
     echo '</div>';
-    return trim(ob_get_clean());
+
+    $html_dynamic = trim(ob_get_clean());
+
+    return $html_dynamic;
 }
 
 add_action('woocommerce_checkout_after_order_review', function () {

@@ -1,16 +1,63 @@
+.mct-checkout {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+}
+
 .mct-checkout .site-main,
 .mct-checkout .content-area,
 .mct-checkout .primary,
-.mct-checkout .container,
 .mct-checkout .wrap,
-.mct-checkout .content{width:100%!important;max-width:none!important;box-sizing:border-box!important;padding:0!important}
+.mct-checkout .content,
+.mct-checkout #content,
+.mct-checkout .site-content,
+.mct-checkout .container,
+.mct-checkout .content-container,
+.mct-checkout .site-container {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    display: block !important;
+}
+
+.mct-checkout .content-wrap,
+.mct-checkout .entry-content {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+@media screen and (min-width: 1025px) {
+  .mct-checkout .has-sidebar .content-container,
+  .mct-checkout .site-content-container,
+  .mct-checkout .ast-container {
+    display: block !important;
+    grid-template-columns: 1fr !important;
+    grid-gap: 0 !important;
+  }
+}
+
 .mct-checkout .secondary,
 .mct-checkout .sidebar,
 .mct-checkout .widget-area{display:none!important}
 .mct-hide-title .entry-title,
 .mct-hide-title .page-title{display:none!important}
 
-.mct-scope{max-width:1120px;margin:0 auto;padding:18px}
+.mct-scope{
+    max-width:1400px;
+    margin:0 auto; 
+    padding:40px; 
+    width: 100%;
+    text-align: left; 
+}
+
 .mct-scope,
 .mct-scope p,
 .mct-scope li,
@@ -18,27 +65,45 @@
 .mct-scope table,
 .mct-scope input,
 .mct-scope select,
-.mct-scope textarea{font-size:15px;line-height:1.5;color:#111827;font-weight:400}
+.mct-scope textarea{font-size:15px;line-height:1.6;color:#111827;font-weight:400}
 .mct-scope strong,
 .mct-scope b{font-weight:600}
 
-.mct-scope .mct-grid{display:grid;gap:24px}
+.mct-scope .mct-grid{display:grid;gap:40px}
 .mct-scope .mct-grid>*{min-width:0}
-.mct-scope.mct-two .mct-grid{grid-template-columns:1.25fr .85fr}
+.mct-scope.mct-two .mct-grid{grid-template-columns:1.4fr 1fr} 
 .mct-scope.mct-one .mct-grid{grid-template-columns:min(760px,100%)}
 .mct-scope.mct-one{display:flex;justify-content:center}
-.mct-scope.mct-two-sidebar .mct-grid{grid-template-columns:1.25fr .85fr minmax(240px,.8fr)}
+.mct-scope.mct-two-sidebar .mct-grid{grid-template-columns:minmax(320px, 1.2fr) minmax(280px, 1.1fr) minmax(240px, 1fr);}
 
-.mct-scope .mct-card{background:#fff;border:1px solid rgba(17,24,39,.08);box-shadow:0 8px 28px rgba(0,0,0,.06);border-radius:16px;padding:18px}
-.mct-scope .mct-title{font-size:18px;line-height:1.3;margin:0 0 12px;font-weight:700;color:#111827}
+.mct-scope .mct-card{
+    background:#fff;
+    border:1px solid rgba(17,24,39,.08);
+    box-shadow:0 16px 40px rgba(0,0,0,.08);
+    border-radius:20px;
+    padding:30px
+}
+
+.mct-scope #order_review,
+.mct-scope .woocommerce-checkout-review-order{
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-sizing: border-box;
+    margin-bottom: 0;
+}
+
+.mct-scope .mct-title{font-size:20px;line-height:1.3;margin:0 0 20px;font-weight:700;color:#111827}
+.mct-scope #order_review_heading, .mct-scope #customer_details h3{display:none}
 
 .mct-scope .woocommerce form.checkout{display:block}
 .mct-scope .woocommerce .col2-set{display:block;float:none!important;width:auto!important;max-width:100%!important}
 .mct-scope .woocommerce .col2-set .col-1,
 .mct-scope .woocommerce .col2-set .col-2{width:100%!important;float:none!important;max-width:100%!important}
-.mct-scope #customer_details{float:none!important;width:auto!important;max-width:100%!important}
+.mct-scope #customer_details{float:none!important;width:auto!important;max-width:100%!important; flex-grow: 1!important;}
 .mct-scope #order_review,
-.mct-scope .woocommerce-checkout-review-order{float:none!important;width:100%!important;max-width:100%!important;clear:none!important}
+.mct-scope .woocommerce-checkout-review-order{float:none!important;width:100%!important;max-width:100%!important;clear:none!important; flex-grow: 1!important;}
 .mct-scope #order_review .shop_table{width:100%}
 .mct-scope .woocommerce table.shop_table,
 .mct-scope .woocommerce .shop_table,
@@ -47,20 +112,20 @@
 .mct-scope .woocommerce form .form-row,
 .mct-scope .woocommerce-checkout form .form-row,
 .mct-scope .woocommerce-billing-fields .form-row,
-.mct-scope .woocommerce-shipping-fields .form-row{display:block!important;width:100%!important;float:none!important;margin:0 0 12px 0}
+.mct-scope .woocommerce-shipping-fields .form-row{display:block!important;width:100%!important;float:none!important;margin:0 0 20px 0}
 .mct-scope .woocommerce form .form-row label,
 .mct-scope .woocommerce-checkout form .form-row label,
 .mct-scope .woocommerce-billing-fields .form-row label,
-.mct-scope .woocommerce-shipping-fields .form-row label{display:block!important;font-size:13.5px;color:#111827;margin:0 0 6px 2px;font-weight:600;letter-spacing:.2px}
+.mct-scope .woocommerce-shipping-fields .form-row label{display:block!important;font-size:14px;color:#111827;margin:0 0 8px 2px;font-weight:600;letter-spacing:.2px}
 .mct-scope .woocommerce form .required{color:#ef4444}
 .mct-scope .woocommerce form ::placeholder{color:#9ca3af;opacity:1}
 
 .mct-scope .woocommerce form .input-text,
-.mct-scope .select2-container--default .select2-selection--single{border-radius:14px;border:1.6px solid #cfd6dd;min-height:44px;padding:12px 14px;font-size:14.5px;background:#ffffff;transition:border-color .15s ease,box-shadow .15s ease}
+.mct-scope .select2-container--default .select2-selection--single{border-radius:14px;border:1.6px solid #cfd6dd;min-height:54px;padding:12px 14px;font-size:16px;background:#ffffff;transition:border-color .15s ease,box-shadow .15s ease}
 .mct-scope .woocommerce form .input-text:focus{border-color:#2563eb;outline:0;box-shadow:0 0 0 3px rgba(37,99,235,.18)}
 .mct-scope .select2-container--default .select2-selection--single{display:flex;align-items:center}
-.mct-scope .select2-container--default .select2-selection--single .select2-selection__rendered{line-height:1;font-size:14.5px;padding-left:2px}
-.mct-scope .select2-container--default .select2-selection--single .select2-selection__arrow{height:44px}
+.mct-scope .select2-container--default .select2-selection--single .select2-selection__rendered{line-height:1;font-size:16px;padding-left:2px}
+.mct-scope .select2-container--default .select2-selection--single .select2-selection__arrow{height:54px}
 .mct-scope .woocommerce form .woocommerce-invalid .input-text{border-color:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.15)}
 .mct-scope .woocommerce form .woocommerce-validated .input-text{border-color:#10b981;box-shadow:0 0 0 3px rgba(16,185,129,.15)}
 
@@ -69,17 +134,39 @@
 .mct-scope .woocommerce-message,
 .mct-scope .woocommerce-error{font-size:14.5px}
 
-.mct-scope table.shop_table{border-radius:12px;overflow:hidden}
-.mct-scope .shop_table th{font-size:13.5px;font-weight:700}
-.mct-scope .shop_table td{font-size:13.5px;font-weight:400}
+.mct-scope table.shop_table {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e5e7eb;
+    border-radius: 0;
+}
+
+.mct-scope .shop_table th{font-size:15px;font-weight:700}
+.mct-scope .shop_table td{font-size:15px;font-weight:400}
+.mct-scope .shop_table tfoot {
+    border-top: 1px solid #e5e7eb;
+    margin-top: 15px;
+}
+.mct-scope .shop_table tfoot tr {
+    padding-top: 15px;
+}
+
 .mct-scope .shop_table tfoot th,
-.mct-scope .shop_table tfoot td{font-size:14.5px}
+.mct-scope .shop_table tfoot td{font-size:16px}
 .mct-scope .shop_table tfoot .order-total th,
 .mct-scope .shop_table tfoot .order-total td{font-weight:700}
 
 .mct-scope button.button,
 .mct-scope button.alt,
-.mct-scope input[type=submit].button{width:100%;padding:12px;border-radius:12px;font-size:15.5px;font-weight:700}
+.mct-scope input[type=submit].button{
+    width:100% !important;
+    padding:16px !important;
+    border-radius:14px !important;
+    font-size:17px !important;
+    font-weight:700 !important; 
+    height: auto !important;
+    line-height: 1 !important;
+    min-height: 54px !important;
+}
 
 .mct-checkout .woocommerce-form-coupon{display:none}
 .mct-coupon-slot .woocommerce-form-coupon{display:block}
@@ -89,33 +176,37 @@
 #order_review .mct-coupon-slot .woocommerce-form-coupon-toggle{display:block}
 #order_review .mct-coupon-slot + .mct-coupon-slot{display:none}
 
-.woocommerce-form-coupon{margin:0 0 14px 0;border:1px dashed #e5e7eb;background:#fafafa;padding:12px;border-radius:12px}
-.woocommerce-form-coupon p{margin:0 0 10px 0;font-size:14px}
+.woocommerce-form-coupon{margin:0 0 16px 0;border:1px dashed #e5e7eb;background:#fafafa;padding:14px;border-radius:14px}
+.woocommerce-form-coupon p{margin:0 0 12px 0;font-size:14.5px}
 .woocommerce-form-coupon .form-row-first,
 .woocommerce-form-coupon .form-row-last{width:100%;float:none}
-.woocommerce-form-coupon .input-text{border-radius:12px;border:1.6px solid #cfd6dd;min-height:40px;padding:8px 10px;font-size:14px;background:#fff}
+.woocommerce-form-coupon .input-text{border-radius:12px;border:1.6px solid #cfd6dd;min-height:46px;padding:10px 12px;font-size:14.5px;background:#fff}
 .woocommerce-form-coupon .input-text:focus{border-color:#2563eb;outline:0;box-shadow:0 0 0 3px rgba(37,99,235,.18)}
 .woocommerce-form-coupon .button{margin-top:8px}
 
-.mct-scope #order_review_heading{display:none}
-.mct-scope #customer_details h3{display:none}
+.mct-scope .woocommerce-shipping-destination{border-top:1px solid #e5e7eb;padding-top:15px; margin-top: 15px;}
+.mct-scope .woocommerce-privacy-policy{border-top:1px solid #e5e7eb;padding-top:20px; margin-top: 20px;}
 
-.mct-footer{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
-.mct-social{width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid rgba(17,24,39,.12);text-decoration:none}
-.mct-social svg{width:16px;height:16px;display:block}
 
-.mct-item{display:flex;align-items:center;gap:10px}
-.mct-item-thumb{display:block;width:40px;height:40px;border-radius:8px;object-fit:cover;flex:0 0 40px}
+.mct-footer{margin-top:30px;display:flex;gap:16px;flex-wrap:wrap; align-items: center;}
+.mct-social{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid rgba(17,24,39,.12);text-decoration:none}
+.mct-social svg{width:18px;height:18px;display:block}
+
+.mct-item{display:flex;align-items:center;gap:12px}
+.mct-item-thumb{display:block;width:44px;height:44px;border-radius:10px;object-fit:cover;flex:0 0 44px}
+
 
 @media(max-width:1024px){
-  .mct-scope{padding:14px}
+  .mct-scope{padding:20px 24px} 
+  .mct-scope .mct-grid{gap:20px}
   .mct-scope.mct-two .mct-grid{grid-template-columns:1fr}
   .mct-scope.mct-two-sidebar .mct-grid{grid-template-columns:1fr}
 }
 
 @media(max-width:640px){
-  .mct-scope .mct-card{padding:14px;border-radius:14px}
-  .mct-scope .mct-title{font-size:17px;margin-bottom:10px}
+  .mct-scope{padding:16px}
+  .mct-scope .mct-card{padding:16px;border-radius:16px}
+  .mct-scope .mct-title{font-size:18px;margin-bottom:12px}
   .mct-scope,
   .mct-scope p,
   .mct-scope li,
@@ -126,12 +217,12 @@
   .mct-scope textarea{font-size:14px}
   .mct-scope .woocommerce form .form-row label{font-size:13px}
   .mct-scope .woocommerce form .input-text,
-  .mct-scope .select2-container--default .select2-selection--single{min-height:42px;font-size:14px}
+  .mct-scope .select2-container--default .select2-selection--single{min-height:44px;font-size:14px}
   .mct-scope .shop_table th,
   .mct-scope .shop_table td{font-size:13px}
   .mct-scope button.button,
   .mct-scope button.alt,
-  .mct-scope input[type=submit].button{font-size:15px;padding:11px;border-radius:10px}
-  .mct-social{width:32px;height:32px}
-  .mct-item-thumb{width:36px;height:36px}
+  .mct-scope input[type=submit].button{font-size:15px;padding:12px;border-radius:12px}
+  .mct-social{width:34px;height:34px}
+  .mct-item-thumb{width:40px;height:40px}
 }
