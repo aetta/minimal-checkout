@@ -182,7 +182,7 @@ add_filter('woocommerce_cart_item_name', function ($name, $cart_item, $cart_item
 
 add_action('woocommerce_checkout_before_customer_details', function () {
     if (!mct_is_plugin_checkout_context()) return;
-    echo '<div class="mct-grid"><div class="mct-card"><h3 class="mct-title">' . esc_html__('Billing details', 'minimal-checkout') . '</h3>';
+    echo '<div class="mct-card"><h3 class="mct-title">' . esc_html__('Billing details', 'minimal-checkout') . '</h3>';
 }, 1);
 
 add_action('woocommerce_checkout_after_customer_details', function () {
@@ -257,8 +257,3 @@ add_action('woocommerce_checkout_after_order_review', function () {
     $html = mct_capture_sidebar_html();
     if ($html !== '') echo '<aside class="mct-card mct-theme-sidebar">' . $html . '</aside>';
 }, 20);
-
-add_action('woocommerce_after_checkout_form', function () {
-    if (!mct_is_plugin_checkout_context()) return;
-    echo '</div>';
-}, 999);

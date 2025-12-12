@@ -15,13 +15,19 @@
 .mct-checkout .site-content,
 .mct-checkout .container,
 .mct-checkout .content-container,
-.mct-checkout .site-container {
+.mct-checkout .site-container,
+.mct-checkout .row,
+.mct-checkout .col,
+.mct-checkout .nv-single-page-wrap,
+.mct-checkout .nv-content-wrap,
+.mct-checkout [class*="content-"] {
     width: 100% !important;
     max-width: none !important;
     margin: 0 !important;
     padding: 0 !important;
     box-sizing: border-box !important;
     display: block !important;
+    flex: 0 0 100% !important;
 }
 
 .mct-checkout .content-wrap,
@@ -69,19 +75,87 @@
 .mct-scope strong,
 .mct-scope b{font-weight:600}
 
-.mct-scope .mct-grid{display:grid;gap:40px}
-.mct-scope .mct-grid>*{min-width:0}
-.mct-scope.mct-two .mct-grid{grid-template-columns:1.4fr 1fr} 
-.mct-scope.mct-one .mct-grid{grid-template-columns:min(760px,100%)}
-.mct-scope.mct-one{display:flex;justify-content:center}
-.mct-scope.mct-two-sidebar .mct-grid{grid-template-columns:minmax(320px, 1.2fr) minmax(280px, 1.1fr) minmax(240px, 1fr);}
+.mct-scope .mct-grid{display:block;gap:40px}
+
+.mct-scope .mct-grid > *{
+    min-width:0 !important;
+    width: auto !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+    flex: 1 1 auto !important;
+}
+
+.mct-scope.mct-one {
+    display: block;
+}
+.mct-scope.mct-one .woocommerce-notices-wrapper,
+.mct-scope.mct-one form.woocommerce-checkout {
+    max-width: 760px !important;
+    width: 100% !important;
+    margin: 0 auto 30px auto !important;
+    float: none !important;
+    display: block !important;
+    clear: both !important;
+}
+.mct-scope.mct-one .mct-card {
+    max-width: 760px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+
+.mct-scope.mct-two {
+    display:grid !important;
+    gap: 40px !important; 
+    grid-template-columns: 1.4fr 1fr !important;
+}
+.mct-scope.mct-two > form.woocommerce-checkout {
+    display: contents !important;
+}
+.mct-scope.mct-two .nv-customer-details {
+    grid-column: 1 / 2 !important;
+}
+.mct-scope.mct-two .mct-card:nth-child(2) {
+    grid-column: 2 / 3 !important;
+}
+
+.mct-scope.mct-two-sidebar {
+  display:grid !important;
+  gap: 40px !important; 
+  grid-template-columns: 1.4fr 1.1fr 0.8fr !important; 
+  grid-template-areas: "billing order sidebar" !important; 
+}
+
+.mct-scope.mct-two-sidebar > form.woocommerce-checkout {
+    grid-area: billing / order !important; 
+    display: contents !important; 
+}
+
+.mct-scope.mct-two-sidebar .nv-customer-details {
+    grid-area: billing !important; 
+}
+
+.mct-scope.mct-two-sidebar .mct-card:nth-child(2) {
+    grid-area: order !important; 
+}
+
+.mct-scope.mct-two-sidebar .mct-theme-sidebar {
+    grid-area: sidebar !important; 
+}
+
+.mct-scope.mct-two > .woocommerce-notices-wrapper,
+.mct-scope.mct-two-sidebar > .woocommerce-notices-wrapper {
+    grid-column: 1 / 3 !important;
+    max-width: 100% !important;
+}
 
 .mct-scope .mct-card{
     background:#fff;
     border:1px solid rgba(17,24,39,.08);
     box-shadow:0 16px 40px rgba(0,0,0,.08);
     border-radius:20px;
-    padding:30px
+    padding:30px;
+    margin-bottom: 30px;
 }
 
 .mct-scope #order_review,
@@ -130,9 +204,19 @@
 .mct-scope .woocommerce form .woocommerce-validated .input-text{border-color:#10b981;box-shadow:0 0 0 3px rgba(16,185,129,.15)}
 
 .mct-scope a{font-size:14.5px}
+
 .mct-scope .woocommerce-info,
 .mct-scope .woocommerce-message,
-.mct-scope .woocommerce-error{font-size:14.5px}
+.mct-scope .woocommerce-error {
+    font-size: 14.5px;
+    background-color: #fff !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 14px !important;
+    color: #111827 !important;
+    padding: 12px 16px !important;
+    list-style: none !important;
+    border-left: 5px solid #2563eb !important;
+}
 
 .mct-scope table.shop_table {
     margin-bottom: 30px;
@@ -167,13 +251,18 @@
     line-height: 1 !important;
     min-height: 54px !important;
 }
-
 .mct-checkout .woocommerce-form-coupon{display:none}
+.mct-scope .woocommerce-form-coupon-toggle { display: none !important; }
+
 .mct-coupon-slot .woocommerce-form-coupon{display:block}
 #order_review .woocommerce-form-coupon,
 #order_review .woocommerce-form-coupon-toggle{display:none}
-#order_review .mct-coupon-slot .woocommerce-form-coupon,
-#order_review .mct-coupon-slot .woocommerce-form-coupon-toggle{display:block}
+
+.mct-coupon-slot .woocommerce-form-coupon,
+.mct-coupon-slot .woocommerce-form-coupon-toggle {
+    display: block !important;
+}
+
 #order_review .mct-coupon-slot + .mct-coupon-slot{display:none}
 
 .woocommerce-form-coupon{margin:0 0 16px 0;border:1px dashed #e5e7eb;background:#fafafa;padding:14px;border-radius:14px}
@@ -199,13 +288,11 @@
 @media(max-width:1024px){
   .mct-scope{padding:20px 24px} 
   .mct-scope .mct-grid{gap:20px}
-  .mct-scope.mct-two .mct-grid{grid-template-columns:1fr}
-  .mct-scope.mct-two-sidebar .mct-grid{grid-template-columns:1fr}
 }
 
 @media(max-width:640px){
   .mct-scope{padding:16px}
-  .mct-scope .mct-card{padding:16px;border-radius:16px}
+  .mct-scope .mct-card{padding:16px;border-radius:16px; margin-bottom: 20px;}
   .mct-scope .mct-title{font-size:18px;margin-bottom:12px}
   .mct-scope,
   .mct-scope p,
